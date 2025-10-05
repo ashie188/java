@@ -1,0 +1,54 @@
+public class ArrayPrinter {
+    
+    // Method to print integer array
+    public static void printIntArray(int[] array) {
+        System.out.print("[");
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i]);
+            if (i < array.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+    
+    // Method to print double array
+    public static void printDoubleArray(double[] array) {
+        System.out.print("[");
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i]);
+            if (i < array.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+    
+    // Method to print string array
+    public static void printStringArray(String[] array) {
+        System.out.print("[");
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i]);
+            if (i < array.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+    
+    // Test main method
+    public static void main(String[] args) {
+        int[] intArray = {1, 2, 3, 4, 5};
+        double[] doubleArray = {1.5, 2.5, 3.5, 4.5, 5.5};
+        String[] stringArray = {"apple", "banana", "cherry", "date", "elderberry"};
+        
+        System.out.println("Integer Array:");
+        printIntArray(intArray);
+        
+        System.out.println("Double Array:");
+        printDoubleArray(doubleArray);
+        
+        System.out.println("String Array:");
+        printStringArray(stringArray);
+    }
+}

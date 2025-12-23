@@ -29,4 +29,30 @@ public class MaxDepthBinaryTree {
     preorder(root.right, count);
   }
 
-  public int maxDepth(TreeNode root)
+  public int maxDepth(TreeNode root) {
+    if (root == null) return 0;
+    int count = 0;
+    preorder(root, count);
+    return maxheight;
+  }
+
+  public static void main(String[] args) {
+    /*
+            1
+           / \
+          2   3
+         /
+        4
+    */
+
+    TreeNode root = new TreeNode(1);
+    root.left = new TreeNode(2);
+    root.right = new TreeNode(3);
+    root.left.left = new TreeNode(4);
+
+    MaxDepthBinaryTree obj = new MaxDepthBinaryTree();
+    int depth = obj.maxDepth(root);
+
+    System.out.println("Maximum Depth of Binary Tree: " + depth);
+  }
+}

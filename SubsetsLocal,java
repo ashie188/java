@@ -1,0 +1,51 @@
+import java.util.*;
+
+public class SubsetsLocal {
+
+    List<List<Integer>> result = new ArrayList<>();
+
+    public void recurse(int index, int[] nums, ArrayList<Integer> curr) {
+        if (index == nums.length) {
+            // add a COPY of curr
+            result.add(new ArrayList<>(curr));
+            return;
+        }
+
+        // include current element
+        curr.add(nums[index]);
+        recurse(index + 1, nums, curr);
+
+        // exclude current element
+        curr.remove(curr.size() - 1);
+        recurse(index + 1, nums, curr);
+    }
+
+    public List<List<Integer>> subsets(int[] nums) {
+        recurse(0, nums, new ArrayList<>());
+        return result;
+    }
+
+    // -------- MAIN METHOD --------
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of elements: ");
+        int n = sc.nextInt();
+
+        int[] nums = new int[n];
+        System.out.println("Enter elements:");
+        for (int i = 0; i < n; i++) {
+            nums[i] = sc.nextInt();
+        }
+
+        SubsetsLocal sol = new SubsetsLocal();
+        List<List<Integer>> ans = sol.subsets(nums);
+
+        System.out.println("All subsets:");
+        for (List<Integer> list : ans) {
+            System.out.println(list);
+        }
+
+        sc.close();
+    }
+}

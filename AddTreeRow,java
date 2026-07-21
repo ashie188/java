@@ -1,0 +1,73 @@
+class Node {
+    int val;
+    Node left;
+    Node right;
+
+    Node(int val) {
+        this.val = val;
+    }
+}
+
+public class AddTreeRow {
+
+    public static Node addOneRow(Node root, int val, int depth) {
+
+        if (depth == 1) {
+            Node newRoot = new Node(val);
+            newRoot.left = root;
+            return newRoot;
+        }
+
+        addRow(root, val, depth, 1);
+        return root;
+    }
+
+    private static void addRow(Node node, int val, int depth, int currentDepth) {
+
+        if (node == null) {
+            return;
+        }
+
+        if (currentDepth == depth - 1) {
+
+            Node leftNode = new Node(val);
+            Node rightNode = new Node(val);
+
+            leftNode.left = node.left;
+            rightNode.right = node.right;
+
+            node.left = leftNode;
+            node.right = rightNode;
+
+            return;
+        }
+
+        addRow(node.left, val, depth, currentDepth + 1);
+        addRow(node.right, val, depth, currentDepth + 1);
+    }
+
+    public static void printPreorder(Node root) {
+        if (root == null) {
+            return;
+        }
+
+        System.out.print(root.val + " ");
+        printPreorder(root.left);
+        printPreorder(root.right);
+    }
+
+    public static void main(String[] args) {
+
+        Node root = new Node(4);
+        root.left = new Node(2);
+        root.right = new Node(6);
+
+        root.left.left = new Node(3);
+        root.left.right = new Node(1);
+        root.right.left = new Node(5);
+
+        root = addOneRow(root, 1, 2);
+
+        printPreorder(root);
+    }
+}
